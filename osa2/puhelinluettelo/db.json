@@ -1,0 +1,24 @@
+{
+  "persons": [
+    {
+      "name": "Arto Hellas",
+      "number": "023450",
+      "id": 1
+    },
+    {
+      "name": "Leevi Heikkilä",
+      "number": "023423460",
+      "id": 2
+    },
+    {
+      "name": "Harri Rekola",
+      "number": "2349058729345",
+      "id": 4
+    },
+    {
+      "name": "Mikael Järvinen",
+      "number": "1324",
+      "id": 5
+    }
+  ]
+}
