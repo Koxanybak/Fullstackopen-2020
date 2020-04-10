@@ -1,0 +1,10 @@
+POST http://localhost:3003/api/blogs
+Content-Type: application/json
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im1sdXVra2FpIiwiaWQiOiI1ZTkwNmM4NGViNWQzOTNjMDRiY2UxNTQiLCJpYXQiOjE1ODY1Mzg3MDV9.ydtu6onU7Xl70-16futPT8wcB07dyzB4VENDqiT0Nmk
+
+{
+  "title": "c",
+  "author": "hän",
+  "url": "sdfokasmfd",
+  "likes": 5
+}
