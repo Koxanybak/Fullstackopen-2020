@@ -3,7 +3,7 @@ import Togglable from "./Togglable"
 import PropTypes from "prop-types"
 
 const Blogs = ({ blogs, updateBlog, deleteBlog, user }) => (
-  <div>
+  <div className="blogs">
     {blogs.sort((a, b) => b.likes - a.likes).map(blog => 
       <Blog key={blog.id} blog={blog} updateBlog={updateBlog} deleteBlog={deleteBlog} user={user} />
     )}
@@ -38,7 +38,7 @@ const Blog = ({ blog, updateBlog, deleteBlog, user }) => {
   }
   
   return (
-    <div style={blogStyle} >
+    <div className="blog" style={blogStyle}>
       <Togglable showButtonLabel="view" hideButtonLabel="hide" hideAtTop={true} alwaysShown={
         [
           `${blog.title} `,
@@ -49,13 +49,13 @@ const Blog = ({ blog, updateBlog, deleteBlog, user }) => {
           {blog.url}
         </div>
         <div>
-          {blog.likes} <button onClick={like}>like</button>
+          {blog.likes} <button className="like" onClick={like}>like</button>
         </div>
         <div>
           {blog.user.name}
         </div>
         {user.username === blog.user.username ? 
-          <button style={removeStyle} onClick={remove}>remove</button>
+          <button className="remove" style={removeStyle} onClick={remove}>remove</button>
           : null
         }
       </Togglable>

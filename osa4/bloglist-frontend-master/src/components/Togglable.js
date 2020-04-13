@@ -20,9 +20,9 @@ const Togglable = React.forwardRef(({ children, showButtonLabel, hideButtonLabel
     <div>
       {alwaysShown}
 
-      <button style={hideWhenVisible} onClick={changeVisible}>{showButtonLabel}</button>
+      <button className="show" style={hideWhenVisible} onClick={changeVisible}>{showButtonLabel}</button>
 
-      <button style={showWhenVisible} onClick={changeVisible}>{hideButtonLabel}</button>
+      <button className="hide" style={showWhenVisible} onClick={changeVisible}>{hideButtonLabel}</button>
       <div style={showWhenVisible} className="testDiv">
         {children}
       </div>

@@ -14,7 +14,6 @@ const App = () => {
   const [errorMessage, setErrorMessage] = useState(null)
 
   const blogFormRef = React.createRef()
-  const loginFormRef = React.createRef()
 
   useEffect(() => {
     blogService.getAll().then(blogs =>
@@ -51,7 +50,6 @@ const App = () => {
 
       window.localStorage.setItem("loggedBloglistUser", JSON.stringify(user))
       blogService.setToken(user.token)
-      loginFormRef.current.changeVisible()
       setUser(user)
       setUsername('')
       setPassword('')
@@ -116,18 +114,19 @@ const App = () => {
       <div>
         <h2>Log in</h2>
         <Notification errorMessage={errorMessage} />
-        <Togglable showButtonLabel="Log in" hideButtonLabel="cancel" ref={loginFormRef}>
-          <LoginForm 
-            username={username}
-            password={password}
-            handleUsernameChange={handleUsernameChange}
-            handlePasswordChange={handlePasswordChange}
-            handleLogin={handleLogin}
-          />
-        </Togglable>
+        <LoginForm 
+          username={username}
+          password={password}
+          handleUsernameChange={handleUsernameChange}
+          handlePasswordChange={handlePasswordChange}
+          handleLogin={handleLogin}
+        />
       </div>
     )
   }
+
+  //<Togglable showButtonLabel="Log in" hideButtonLabel="cancel" ref={loginFormRef}>
+  //</Togglable>
 
   return (
     <div>
