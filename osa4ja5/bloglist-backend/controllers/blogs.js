@@ -25,7 +25,9 @@ blogsRouter.post("/", async (request, response) => {
     blog.likes = 0
   }
 
-  const savedBlog = await blog.save()
+  let savedBlog = await blog.save()
+  savedBlog = await Blog.findById(savedBlog._id).populate("user", { username: 1, name: 1 })
+  console.log(savedBlog)
   user.blogs = user.blogs.concat(savedBlog._id)
   await user.save()
   response.status(201).json(savedBlog.toJSON())
@@ -41,7 +43,7 @@ blogsRouter.delete("/:id", async (request, response) => {
   const user = await User.findById(decodedToken.id)
   const blog = await Blog.findById(request.params.id)
 
-  if (!user.blogs.map(b => b.toString()).includes(blog._id.toString())) {
+  if (!(user.blogs.map(b => b.toString()).includes(blog._id.toString()) || blog.user.toString() === user._id.toString())) {
     return response.status(401).json({ error: "invalid or missing token" })
   }
 
@@ -51,8 +53,8 @@ blogsRouter.delete("/:id", async (request, response) => {
 })
 
 blogsRouter.put("/:id", async (request, response) => {
-  const updatedBlog = await Blog.findByIdAndUpdate(request.params.id, request.body)
-  response.status(200).json(updatedBlog)
+  const updatedBlog = await Blog.findByIdAndUpdate(request.params.id, request.body, { new: true }).populate("user", { username: 1, name: 1 })
+  response.status(200).json(updatedBlog.toJSON())
 })
 
 module.exports = blogsRouter

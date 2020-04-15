@@ -35,6 +35,8 @@ const App = () => {
     Service.update(person)
       .then(updatedPerson => {
         setPersons(persons.map(personObj => personObj.id === updatedPerson.id ? updatedPerson : personObj))
+        setNewName('')
+        setNewNumber('')
         setErrorMessage(`Updated ${updatedPerson.name}'s phone number`)
         setTimeout(() => {
           setErrorMessage(null)
@@ -73,6 +75,13 @@ const App = () => {
         setNewName('')
         setNewNumber('')
         setErrorMessage(`Added ${returnedPerson.name}`)
+        setTimeout(() => {
+          setErrorMessage(null)
+        }, 5000)
+      })
+      .catch(error => {
+        console.log(error.response.data.error)
+        setErrorMessage(error.response.data.error)
         setTimeout(() => {
           setErrorMessage(null)
         }, 5000)
