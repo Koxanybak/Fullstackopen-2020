@@ -94,13 +94,11 @@ const FullPatient = () => {
   const openModal = (): void => setModalOpen(true);
 
   const closeModal = (): void => {
-    console.log("closed");
     setModalOpen(false);
     setError(undefined);
   };
 
   const submitNewEntry = async (values: EntryFormValues) => {
-    console.log("submitted");
     try {
       if (patient) {
         const { data: newEntry } = await axios.post<Entry>(
@@ -113,6 +111,7 @@ const FullPatient = () => {
     } catch (e) {
       console.error(e.response.data);
       setError(e.response.data.error);
+      window.alert(e.response.data);
     }
   };
 
@@ -134,7 +133,7 @@ const FullPatient = () => {
         setPatient(patient);
       }
     }
-  }, []);
+  }, [patients]);
 
   if (!patient) {
     return null;

@@ -1,7 +1,7 @@
 import React from "react";
 import { HealthCheckEntry, HealthCheckRating } from "../types";
-import { Formik, Field } from "formik";
-import { Grid, Form, Button } from "semantic-ui-react";
+import { Formik, Field, Form } from "formik";
+import { Grid, Button } from "semantic-ui-react";
 import { TextField, DiagnosisSelection, NumberField } from "../AddPatientModal/FormField";
 import { useStateValue } from "../state";
 
@@ -29,11 +29,11 @@ export const EntryForm: React.FC<Props> = ({ onSubmit, onCancel }) => {
       validate={values => {
         const requiredError = "Field is required";
         const errors: { [field: string]: string } = {};
-        if (!values.healthCheckRating) {
-          errors.healthCheckRating = requiredError;
-        }
         if (!values.description) {
           errors.description = requiredError;
+        }
+        if (!values.healthCheckRating) {
+          errors.healthCheckRating = requiredError;
         }
         if (!values.specialist) {
           errors.specialist = requiredError;
