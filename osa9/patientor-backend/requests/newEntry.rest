@@ -1,0 +1,16 @@
+POST http://localhost:3001/api/patients/d2773336-f723-11e9-8f0b-362b9e155667/entries
+Content-Type: application/json
+
+{
+  "name": "nimi",
+  "description": "kuvaus",
+  "date": "päivä",
+  "specialist": "läägärs",
+  "diagnosisCodes": ["Z57.1", "J06.9"],
+  "type": "OccupationalHealthcare",
+  "employerName": "SuPo",
+  "sickLeave": {
+    "startDate": "tänään",
+    "endDate": "huomenna"
+  }
+}
